@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.14)
+project(Hackerrank_Problems)
+
+set(CMAKE_CXX_STANDARD 17)
+
+#add_executable(Hackerrank_Problems main.cpp Sock_Merchant.c Sock_Merchant.cpp Sock_Merchant.h)
+add_executable(Sock_Merchant Sock_Merchant.cpp)
+add_executable(CountingValleys Counting_Valleys.cpp)
+add_executable(Jump_Cloud Jump_Cloud.c)
+add_executable(main main.cpp)
+add_executable(Map Map.cpp)
+add_executable(test_string test_string.cpp)
+add_executable(Repeated_String Repeated_String.c)
+add_executable(VLA VLA.cc)
+add_executable(Day15 Day15.cpp)
+add_executable(Day18 Day18.cc)
