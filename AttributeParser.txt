@@ -1,0 +1,56 @@
+<tag_name variable_name = "Variable Value" , ...>
+	  <tag_name2 ....>
+	  <tag_name3 ...>
+</end_tag_name>
+
+<tag_name>
+</tag_name> is also valid:
+
+
+for each tag_name, have it as a map<string, vector<Variable>
+
+where Variable is
+
+
+A stack handles the current tag_name, so each time a tag_name is found,
+the name is placed on the stack, and the program expects that in the future,
+a line with /tag_name should exist. If not, then create an error.
+
+So for each line:
+   first char must be '<'
+   last character must be '>'
+   throw invalid exception if not.
+
+   The next word after the < character is either / or alphanumerical character.
+   If the character is /, then Check if the tag_name is in the list.
+   If it is, then pop it from the stack. If it is not, throw an error.
+   
+   Otherwise, the word after is consider to be the tag name, and then create a
+   Tag object with the name tag_name.
+
+   Next, check if the next character is >. if so, then go to next line.
+
+   Otherwise, assume the next characters are a string for a variable.
+   Create a variable with name variable_name.
+   next, check for a space, an equalsign and then a space. Throw an error if that isn't followed.
+   Next, the character should be ". Throw an error if not.
+   Find the next " by using find. If not found, throw error.
+   Otherwise use the iterator pair to store the value into the variable.
+   
+   If this is successful, do the following:
+   Add the variable to the tag name on the top of the stack. Do this by adding it to a vector of Variable pointers.
+   Starting from the bottom to the top of the stack, make sure that the tag above it is in the tag list of the previous tag. Do this until you each the top of the stack.
+
+   Now, check the next characters. If there is no space, go to the next line.
+   Otherwise, if there's a space, check the next character. If its alphanumerical, then
+   do the string parsing again. Otherwise, throw an error.
+   
+
+
+
+HOW TO HANDLE 
+
+      
+
+
+
