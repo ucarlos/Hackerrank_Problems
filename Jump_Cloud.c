@@ -1,7 +1,7 @@
 //
 // Created by ulysses on 7/5/19.
 //
-#include "../common_header.h"
+#include <stdio.h>
 int cloud_jump(int *array, int array_len){
 
     int *pointer = &array[0];

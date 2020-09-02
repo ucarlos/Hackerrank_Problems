@@ -1,8 +1,7 @@
 //
 // Created by ulysses on 7/5/19.
 //
-
-#include "Sock_Merchant.h"
+#include <iostream>
 #include <bits/stdc++.h>
 
 using namespace std;
