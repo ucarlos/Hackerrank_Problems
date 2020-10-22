@@ -112,7 +112,8 @@ list<Tag> tag_list;
 bool is_endtag(const string &str){
     char first_char = str.front();
     string tag_name;
-    auto stack_name = stack;
+    // Show stack for debugging
+    // auto stack_name = stack;
     if (first_char == '/'){
 
 	tag_name = str.substr(1);
@@ -150,7 +151,7 @@ bool is_endtag(const string &str){
 void adjust_stack(Tag &t){
     //Add the current tag to the stack
     // Show stack for debugging.
-    auto stack_copy = stack;
+    // auto stack_copy = stack;
     
     tag_list.push_back(t);
     if (stack.empty()){
@@ -159,9 +160,10 @@ void adjust_stack(Tag &t){
     }
     
     stack.push_back(&tag_list.back());
-    stack_copy = stack;
-    auto end = stack.end();
-    end--;
+    // stack_copy = stack;
+    
+    auto end = stack.end(); end--;
+
     for (auto it = stack.begin(); it != end; it++){
 	// Check if the current tag has the next tag as a child.
 	// Skip if in list, otherwise add it.

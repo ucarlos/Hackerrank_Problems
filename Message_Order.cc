@@ -40,59 +40,68 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-
+#include <cstdint>
 using namespace std;
 
 class Message {
 public: 
     Message()=default;
     Message(const string &new_str): str{new_str} { }
+    Message(uint64_t idd, const string new_str) : id{idd}, str{new_str} { }
     const string& get_text() const { return str; }
+    
     friend bool operator<(const Message &m1, const Message &m2);
     friend bool operator>(const Message &m1, const Message &m2);
     friend bool operator==(const Message &m1, const Message &m2);    
 private:
     std::string str{};
+    uint64_t id{0};
 };
 
 // Operator< for Message
 bool operator<(const Message &m1, const Message &m2){
-    return m1.str < m2.str;
+    return m1.id < m2.id;
 }
 
 bool operator>(const Message &m1, const Message &m2){
-    return m1.str > m2.str;
+    return m1.id > m2.id;
 }
 
 bool operator==(const Message &m1, const Message &m2){
-    return m1.str == m2.str;
+    return m1.id == m2.id;
 }
 
 class MessageFactory {
 public:
     MessageFactory()=default;
     Message create_message(const string& text) {
-	return Message{text};
+	return Message{id++, text};
     }
+private:
+    uint64_t id{0};
 };
 
 class Recipient {
 public:
     Recipient() {}
+    
     void receive(const Message& msg) {
         messages_.push_back(msg);
     }
+    
     void print_messages() {
         fix_order();
         for (auto& msg : messages_) {
             cout << msg.get_text() << endl;
         }
+	
         messages_.clear();
     }
 private:
     void fix_order() {
         sort(messages_.begin(), messages_.end());
     }
+    
     vector<Message> messages_;
 };
 
