@@ -13,10 +13,10 @@
 
 #define MAX_SIZE (1024)
 
-char * skip_space(char *str) {
-	while (isspace(*str))
-		str++;
-	return str;
+void skip_space(char **str) {
+	while (isspace(**str))
+		/* (*str += 1); */
+		(*str)++;
 }
 
 int main(void) {
@@ -39,9 +39,9 @@ int main(void) {
 		
 		printf("%s\n", temp);
 		begin += size;
-		begin = skip_space(begin);
+		/* begin = skip_space(begin); */
+		skip_space(&begin);
 		/* printf("Begin now points to %lu\n", (begin - string)); */
-	}
-	
+	}	
 	
 }

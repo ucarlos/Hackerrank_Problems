@@ -22,10 +22,8 @@ struct Complex {
 
 Complex Complex::operator+(const Complex &b){
     Complex temp = *this;
-    
     temp.a += b.a;
     temp.b += b.b;
-
     return temp;
 }
 
